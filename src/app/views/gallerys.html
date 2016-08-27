@@ -1,0 +1,10 @@
+<div class="gallerys-container">
+  <div class="gallerys">
+        <h1>Gallery List</h1>
+        <ul>
+              <li ng-repeat="gallery in $ctrl.galleryList.gallerys" gallery="gallery">
+                    <a ui-sref="singlegallery({albumid:gallery.albumid})">{{gallery.title}}</a>
+            </li>
+        </ul>
+  </div>
+</div>
