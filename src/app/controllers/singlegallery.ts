@@ -2,16 +2,16 @@
 import {PicasaService, IPGallery} from '../services/picasaService';
 
 /** @ngInject */
-class SingleGalleryController{
+class SingleGalleryController {
 
-      public gallery : IPGallery;
+      public gallery: IPGallery;
 
-      constructor(public $stateParams:ng.ui.IStateParamsService,public picasaService:PicasaService){
+      constructor(public $stateParams: ng.ui.IStateParamsService, public picasaService: PicasaService) {
             console.log($stateParams);
-            this.picasaService.fetchImageFromGallery('roparat',$stateParams['albumid'])
-            .then((singleGallery:IPGallery)=>{
-                  this.gallery = singleGallery;
-            });
+            this.picasaService.fetchImageFromGallery('roparat', $stateParams['albumid'])
+                  .then((singleGallery: IPGallery) => {
+                        this.gallery = singleGallery;
+                  });
       }
 }
 

@@ -8,6 +8,7 @@ class GalleryListController {
 
       constructor(private picasaService: PicasaService) {
             picasaService.fetchGalleryList('roparat').then((gl: IPGalleryList) => {
+                  console.log(gl);
                   this.galleryList = gl;
             });
       }

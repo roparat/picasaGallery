@@ -107,14 +107,13 @@ function parseAlbumList(response: any): IPGalleryList {
 }
 
 function parseGalleryHeader(feed: any): IPGallery {
-      // console.log(feed);
       return {
             albumid: feed.gphoto$id.$t,
             author: feed.gphoto$nickname.$t,
             title: feed.title.$t,
 
             location: feed.gphoto$location.$t,
-            albumCover: (feed.media$group) ? (feed.media$group.media$thumbnail.url) : undefined,
+            albumCover: (feed.media$group) ? (feed.media$group.media$thumbnail[0].url) : undefined,
             numphotos: parseInt(feed.gphoto$numphotos.$t, 10),
       };
 }

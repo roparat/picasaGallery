@@ -3,7 +3,11 @@
         <h1>{{sgCtrl.gallery.title}}</h1>
         <ul>
               <li ng-repeat="photo in sgCtrl.gallery.photos" photo="photo">
-                    <a href="{{photo.image.url}}">{{photo.title}} ({{photo.info.width}} x {{photo.info.height}})</a>
+                    <a href="{{photo.image.url}}">
+                          <img src="{{photo.thumbnail.url}}"></img>
+                          <div>{{photo.title}} ({{photo.info.width}} x {{photo.info.height}})</div>
+                        </a>
+                    <button class="btn" clipboard supported="supported" text="photo.image.url">Copy</button>
             </li>
         </ul>
   </div>

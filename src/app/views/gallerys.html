@@ -3,7 +3,10 @@
         <h1>Gallery List</h1>
         <ul>
               <li ng-repeat="gallery in $ctrl.galleryList.gallerys" gallery="gallery">
-                    <a ui-sref="singlegallery({albumid:gallery.albumid})">{{gallery.title}}</a>
+                    <a ui-sref="singlegallery({albumid:gallery.albumid})">
+                          <img src="{{gallery.albumCover}}"></img>
+                          <div>{{gallery.title}}</div>
+                    </a>
             </li>
         </ul>
   </div>
