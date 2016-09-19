@@ -1,13 +1,20 @@
 <div class="gallerys-container">
-  <div class="gallerys">
-        <h1>Gallery List</h1>
-        <ul>
-              <li ng-repeat="gallery in $ctrl.galleryList.gallerys" gallery="gallery">
-                    <a ui-sref="singlegallery({albumid:gallery.albumid})">
-                          <img src="{{gallery.albumCover}}"></img>
-                          <div>{{gallery.title}}</div>
-                    </a>
-            </li>
-        </ul>
-  </div>
+      <div class="page-header">
+            <h1>Gallery List</h1>
+      </div>
+      <div class="gallerys">
+            <div class="gallery-list flex">
+                  <div class="" ng-repeat="gallery in $ctrl.galleryList.gallerys" gallery="gallery">
+                        <div class="gallery-panel thumbnail">
+                              <a ui-sref="singlegallery({albumid:gallery.albumid})">
+                                    <div class="gallery-panel-image">
+                                          <!--div class="gallery-image" style="background-image: url('{{gallery.albumCover}}')"></div-->
+                                          <img class="gallery-image" src="{{gallery.albumCover}}"></img>
+                                    </div>
+                                    <div class="gallery-panel-title">{{gallery.title}}</div>
+                              </a>
+                        </div>
+                  </div>
+            </div>
+      </div>
 </div>

@@ -5,6 +5,7 @@ import * as angular from 'angular';
 import {main} from './app/controllers/main';
 import {PicasaService} from './app/services/picasaService';
 import {galleryList} from './app/controllers/gallerys';
+import {singleGallery} from './app/controllers/singlegallery';
 import 'angular-ui-router';
 import routesConfig from './routes';
 import 'angular-clipboard';
@@ -18,4 +19,5 @@ angular
   .config(routesConfig)
   .component('app', main)
   .service('picasaService', PicasaService)
-  .component('galleryList', galleryList);
+  .component('galleryList', galleryList)
+  .component('singleGallery',singleGallery);

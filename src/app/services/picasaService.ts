@@ -34,7 +34,7 @@ export class PicasaService {
       fetchImageFromGallery(username: string, albumid: string) {
             return this.$q((resolve, reject) => {
                   var options = {
-                        thumbSize: 320,
+                        thumbSize: 1024,
                         thumbCrop: false,
                         imageSize: 1024,
                   };
@@ -123,7 +123,7 @@ function parseImageFromGallery(response: any): IPGallery {
       var galObj: IPGallery = parseGalleryHeader(feed);
       galObj.subtitle = feed.subtitle.$t;
 
-      galObj.photos = feed.entry.map( (singleImage: any) => {
+      galObj.photos = feed.entry.map((singleImage: any) => {
             // console.log(singleImage);
             var thumbnail = singleImage.media$group.media$thumbnail[0];
             var actualImage = singleImage.media$group.media$content[0];
@@ -155,9 +155,15 @@ function parseImageFromGallery(response: any): IPGallery {
       return galObj;
 }
 
-function splitUrl(url: string) {
+function splitUrl(url: string, index:number=1) {
       var pathspilt = url.split(/\/{1}/);
-      var baseurl = pathspilt.slice(0, 1) + '//' + pathspilt.slice(2, pathspilt.length - 1).join('/') + '/';
+      var baseurl = pathspilt.slice(0, 1) + '//' + pathspilt.slice(2, pathspilt.length - index).join('/') + '/';
       var filename = pathspilt[pathspilt.length - 1];
       return [baseurl, filename];
+}
+
+export function getImageUrl(url: string, size: number = 1024, crop: boolean = false): string {
+      var pathSpilt = splitUrl(url, 2);
+      var imageAtDesiredSize = pathSpilt[0] + 's' + size + (crop ? '-c' : '') + '/' + pathSpilt[1];
+      return imageAtDesiredSize;
 }

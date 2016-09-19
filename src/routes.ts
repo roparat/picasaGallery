@@ -6,7 +6,7 @@ import {singleGallery} from './app/controllers/singlegallery';
 
 /** @ngInject */
 function routesConfig($stateProvider: angular.ui.IStateProvider, $urlRouterProvider: angular.ui.IUrlRouterProvider, $locationProvider: angular.ILocationProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
+  $locationProvider.html5Mode(false);
   $urlRouterProvider.otherwise('/');
 
   $stateProvider

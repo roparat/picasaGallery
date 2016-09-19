@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 
-import {PicasaService, IPGalleryList} from '../services/picasaService';
+import {PicasaService, IPGalleryList, IPGallery, getImageUrl} from '../services/picasaService';
 
 /** @ngInject */
 class GalleryListController {
@@ -10,6 +10,9 @@ class GalleryListController {
             picasaService.fetchGalleryList('roparat').then((gl: IPGalleryList) => {
                   console.log(gl);
                   this.galleryList = gl;
+                  this.galleryList.gallerys.forEach((sg:IPGallery) => {
+                        sg.albumCover = getImageUrl(sg.albumCover,240,true);
+                  });
             });
       }
 }

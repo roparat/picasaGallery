@@ -1,14 +1,16 @@
 <div class="single-gallery-container">
-  <div class="photos">
-        <h1>{{sgCtrl.gallery.title}}</h1>
-        <ul>
-              <li ng-repeat="photo in sgCtrl.gallery.photos" photo="photo">
-                    <a href="{{photo.image.url}}">
-                          <img src="{{photo.thumbnail.url}}"></img>
-                          <div>{{photo.title}} ({{photo.info.width}} x {{photo.info.height}})</div>
+      <div class="page-header">
+            <h1>{{sgCtrl.gallery.title}}</h1>
+            <input type="number" id="image-size" placeholder="1024" ng-model="sgCtrl.copySize" ng-change="sgCtrl.changeCopySize()"></input>
+      </div>
+      <div class="photos flex">
+                  <div class="gallery-panel thumbnail" ng-repeat="photo in sgCtrl.gallery.photos" photo="photo" >
+                        <a href="{{photo.image.url}}">
+                              <img class="gallery-image" src="{{photo.thumbnail.url}}"></img>
+                              <div>{{photo.title}} ({{photo.info.width}} x {{photo.info.height}})</div>
                         </a>
-                    <button class="btn" clipboard supported="supported" text="photo.image.url">Copy</button>
-            </li>
-        </ul>
-  </div>
+                        <input id="ip-{{photo.id}}" clipboard supported="supported" ng-hide="true" ng-model="photo.copyURL"></input>
+                        <button type="button" class="btn btn-primary" name="copy-{{photo.id}}" ng-click="sgCtrl.copyURL($event,photo.id,photo.copyURL)" ng><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+                  </div>
+      </div>
 </div>
